@@ -14,7 +14,7 @@
       Add a new post
     </h2>
 
-    <form action="<%= @the_board.id %>/insert_post" method="post">
+    <form action="/boards/<%= @the_board.id %>/insert_post" method="post">
       <div>
         <label for="title_box">
           Title
@@ -38,6 +38,7 @@
 
         <input type="date" id="expires_on_box" name="query_expires_on">
       </div>
+      <input type="hidden" name="board_id" value="<%= @the_board.id %>">
 
       <button>
         Add post
@@ -54,9 +55,6 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Title
@@ -67,31 +65,18 @@
         </th>
 
         <th>
+          Posted on
+        </th>
+
+        <th>
           Expires on
         </th>
 
-        <th>
-          Board
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
       </tr>
 
       <% @the_board.active_posts.each do |a_post| %>
       <tr>
-        <td>
-          <%= a_post.id %>
-        </td>
-
+ 
         <td>
           <%= a_post.title %>
         </td>
@@ -101,24 +86,11 @@
         </td>
 
         <td>
-          <%= a_post.expires_on %>
+          <%= a_post.created_at.strftime("%b %d, %Y") %>
         </td>
 
         <td>
-          <%= a_post.board_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_post.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_post.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/posts/<%= a_post.id %>">
-            Show details
-          </a>
+          <%= a_post.expires_on.strftime("%b %d, %Y") %>
         </td>
       </tr>
       <% end %>
@@ -133,9 +105,6 @@
   <div>
     <table border="1">
       <tr>
-        <th>
-          ID
-        </th>
 
         <th>
           Title
@@ -146,31 +115,18 @@
         </th>
 
         <th>
+          Posted on
+        </th>
+
+        <th>
           Expires on
         </th>
 
-        <th>
-          Board
-        </th>
-
-        <th>
-          Created at
-        </th>
-
-        <th>
-          Updated at
-        </th>
-
-        <th>
-        </th>
       </tr>
 
       <% @the_board.expired_posts.each do |a_post| %>
       <tr>
-        <td>
-          <%= a_post.id %>
-        </td>
-
+ 
         <td>
           <%= a_post.title %>
         </td>
@@ -180,24 +136,11 @@
         </td>
 
         <td>
-          <%= a_post.expires_on %>
+          <%= a_post.created_at.strftime("%b %d, %Y") %>
         </td>
 
         <td>
-          <%= a_post.board_id %>
-        </td>
-
-        <td>
-          <%= time_ago_in_words(a_post.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(a_post.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/posts/<%= a_post.id %>">
-            Show details
-          </a>
+          <%= a_post.expires_on.strftime("%b %d, %Y") %>
         </td>
       </tr>
       <% end %>

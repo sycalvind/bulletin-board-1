@@ -16,6 +16,7 @@ class BoardsController < ApplicationController
 
     render({ :template => "boards/show" })
   end
+  
 
   def create
     the_board = Board.new

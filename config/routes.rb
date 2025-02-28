@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   # post("/insert_post", { :controller => "posts", :action => "create" })
           
   # READ
-  get("/posts", { :controller => "posts", :action => "index" })
+  # get("/posts", { :controller => "posts", :action => "index" })
   
-  get("/posts/:path_id", { :controller => "posts", :action => "show" })
+  # get("/posts/:path_id", { :controller => "posts", :action => "show" })
   
   # UPDATE
   
@@ -26,10 +26,10 @@ Rails.application.routes.draw do
           
   # READ
   get("/boards", { :controller => "boards", :action => "index" })
+
+  post("/boards/:path_id/insert_post", { :controller => "posts", :action => "create" })
   
   get("/boards/:path_id", { :controller => "posts", :action => "index" })
-
-  post(":path_id/insert_post", { :controller => "posts", :action => "create" })
 
   # get("/boards/:path_id", { :controller => "posts", :action => "index" })
   
